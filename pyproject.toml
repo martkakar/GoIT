@@ -1,1 +1,15 @@
-b
+[tool.poetry]
+name = "Application-Personal-Assistant"
+version = "0.1.0"
+description = "Address book and notebook"
+authors = ["Marta, Alicja, Ola, Paweł, Kamil"]
+license = "MIT"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
