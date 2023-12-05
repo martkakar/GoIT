@@ -3,16 +3,16 @@ import asyncio
 from datetime import date, timedelta
 
 class NBPAPI:
+    base_url = "http://api.nbp.pl/api/exchangerates/rates/c/"
+    currencies = ["EUR", "USD"]
     def __init__(self):
-        self.base_url = "http://api.nbp.pl/api/exchangerates/rates/c/"
-        self.currencies = ["EUR", "USD"]
-
+        pass
     async def fetch_exchange_rate(self, start_date):
         async with aiohttp.ClientSession() as session:
             rates = {}
             for currency in self.currencies:
                 response = await session.get(f"{self.base_url}{currency}/last/10/?format=json")
-                if response.status != 200:
+                if response.ok == False:
                     raise ValueError(f"Failed to fetch data for {currency} - status code: {response.status}")
 
                 data = await response.json()
